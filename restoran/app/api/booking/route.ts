@@ -4,7 +4,6 @@ export async function POST(request: Request) {
   const body = await request.json();
   const { nama, noTelp, email, tanggal, jumlahOrang, acara } = body;
 
-  // Validasi di server (jangan percaya data dari browser)
   if (!nama || !noTelp || !email || !tanggal || !(jumlahOrang >= 1)) {
     return Response.json({ error: "Data belum lengkap" }, { status: 400 });
   }
