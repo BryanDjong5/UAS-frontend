@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import styles from "./reservasi.module.css";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+import styles from "./reservasi.module.css";
 
 export default function Reservasi() {
   const router = useRouter();
@@ -30,29 +31,25 @@ export default function Reservasi() {
         setPesan(data.error ?? "Gagal menyimpan");
         return;
       }
-      setPesan("Reservasi berhasil!");
-      setTujuan("");
-      setTanggal("");
-      setJam("");
-      setJumlahOrang(1);
+
       router.push("/SistemBooking/booking");
-      } catch {
+    } catch {
       setPesan("Tidak bisa terhubung ke server");
     } finally {
       setLoading(false);
     }
   };
 
-
   return (
     <div className={styles.page}>
+      <Image src="/img/resto.jpg" alt="" fill style={{ objectFit: "cover", zIndex: -1 }} priority />
       <div className={styles.card}>
         <h1 className={styles.title}>Reservasi</h1>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <input type="text" value={tujuan} onChange={(e) => setTujuan(e.target.value)} placeholder="Tujuan reservasi" required />
-          <input type="date" value={tanggal} onChange={(e) => setTanggal(e.target.value)} required />
-          <input type="time" value={jam} onChange={(e) => setJam(e.target.value)} required />
-          <input type="number" min={1} value={jumlahOrang} onChange={(e) => setJumlahOrang(Number(e.target.value))} />
+          <input className={styles.inputReservasi} type="text" value={tujuan} onChange={(e) => setTujuan(e.target.value)} placeholder="Tujuan reservasi" required />
+          <input className={styles.inputReservasi} type="date" value={tanggal} onChange={(e) => setTanggal(e.target.value)} required />
+          <input className={styles.inputReservasi} type="time" value={jam} onChange={(e) => setJam(e.target.value)} required />
+          <input className={styles.inputReservasi} type="number" min={1} value={jumlahOrang} onChange={(e) => setJumlahOrang(Number(e.target.value))} />
           <button className={styles.submit} type="submit" disabled={loading}>
             {loading ? "Menyimpan..." : "Reservasi"}
           </button>

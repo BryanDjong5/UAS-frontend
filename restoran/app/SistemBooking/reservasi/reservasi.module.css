@@ -1,10 +1,15 @@
 .page {
     min-height: 100vh;
     display: flex;
-    justify-content: center;   
-    align-items: center;      
-    background: #f5f5f4;
+    justify-content: center;
+    align-items: center;
     padding: 24px;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("/img/resto.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .card {
