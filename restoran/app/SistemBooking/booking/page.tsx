@@ -3,6 +3,8 @@
 import styles from "./booking.module.css";
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import "bootstrap/dist/css/bootstrap.min.css";
+import NavbarComponent from "@/app/components/navbar";
 
 export default function Booking() {
   const router = useRouter();
@@ -59,6 +61,8 @@ export default function Booking() {
   };
 
   return (
+    <>
+    <NavbarComponent />
     <div className={styles.booking}>
       <div className={styles.page}>
         <h1 className={styles.title}>Booking restoran</h1>
@@ -89,5 +93,6 @@ export default function Booking() {
         {pesan && <p>{pesan}</p>}
       </div>
     </div>
+    </>
   );
 }
