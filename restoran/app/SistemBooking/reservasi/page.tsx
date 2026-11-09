@@ -4,6 +4,8 @@ import { useState, type FormEvent } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import styles from "./reservasi.module.css";
+import NavbarComponent from "@/app/components/navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Reservasi() {
   const router = useRouter();
@@ -41,6 +43,8 @@ export default function Reservasi() {
   };
 
   return (
+    <>
+    <NavbarComponent />
     <div className={styles.page}>
       <Image src="/img/resto.jpg" alt="" fill style={{ objectFit: "cover", zIndex: -1 }} priority />
       <div className={styles.card}>
@@ -50,12 +54,17 @@ export default function Reservasi() {
           <input className={styles.inputReservasi} type="date" value={tanggal} onChange={(e) => setTanggal(e.target.value)} required />
           <input className={styles.inputReservasi} type="time" value={jam} onChange={(e) => setJam(e.target.value)} required />
           <input className={styles.inputReservasi} type="number" min={1} value={jumlahOrang} onChange={(e) => setJumlahOrang(Number(e.target.value))} />
-          <button className={styles.submit} type="submit" disabled={loading}>
-            {loading ? "Menyimpan..." : "Reservasi"}
+         <div className={styles.buttonGroup}>
+         <button className={styles.submit} type="submit" disabled={loading}>
+              {loading ? "Menyimpan..." : "Reservasi"}
           </button>
+
+            <button type="button" className={styles.cancel} onClick={() => router.push("/home")} disabled={loading}> Cancel</button>
+          </div>
         </form>
         {pesan && <p>{pesan}</p>}
       </div>
     </div>
+    </>
   );
 }

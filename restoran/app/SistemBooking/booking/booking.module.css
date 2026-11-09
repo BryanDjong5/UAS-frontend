@@ -28,16 +28,39 @@
     padding: 15px;  
 }
 
+.buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.submit,
+.cancel {
+  flex: 1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  cursor: pointer;
+}
+
 .submit {
-    background-color: blue;
-    color: white;
-    border: none;                
-    border-radius: 5px;
-    padding: 12px;
-    width: 100%;                
-    cursor: pointer;
+  background-color: blue;
 }
 
 .submit:hover {
-    background-color: darkblue;
+  background-color: darkblue;
+}
+
+.cancel {
+  background-color: red;
+}
+
+.cancel:hover {
+  background-color: red;
+}
+
+.submit:disabled,
+.cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
